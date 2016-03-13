@@ -1,0 +1,28 @@
+<h3>Your current order</h3>
+<% if @foods.count() == 0 || session[:foods_order].count == 0 %>
+      Currently, you do not have any food in the basket. Please order <%= link_to "here", sections_path  %>
+    <% else %>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Name of food</th>
+        <th>Price per item</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+    <% end %>
+
+
+<% @foods.each do |f| %>
+    <tr>
+    <td><%= f.name %></td>
+    <td><%= number_to_currency(f.price, precision: 0, separator: '.', delimiter: '.', unit: '', format: "%n VND") %></td>
+    <td><%= f.description %></td>
+    </tr>
+<% end %>
+<% if @foods.count() != 0 %>
+      </tbody>
+      </table>
+<% end %>
+<%= render 'form' %>

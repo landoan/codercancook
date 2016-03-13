@@ -1,14 +1,27 @@
 <ul class="nav nav-tabs">
-  <% @sections.each do |section| %>
+  <% @section_types.each do |section| %>
       <li class="nav-item">
         <a class="nav-link <%= section.id == 1? 'active': ''%>" data-toggle="tab" href="#section_<%= section.id %>"><%= section.name %></a>
       </li>
   <% end %>
 </ul>
 <div class="tab-content">
-  <% @sections.each do |section| %>
+  <% @section_types.each do |section| %>
       <div id="section_<%= section.id %>" class="tab-pane <%= section.id == 1? 'active': ''%>">
-        <%= form_for [@section] %>
+        <form id ="sort-form-<%= section.id %>" action="sections" method="get" class="form-inline">
+          <div class="form-group">
+          <select id="sort-type-<%= section.id %>" name="sort_type" class="form-control">
+            <option>Sort by...</option>
+            <option value="aToz">A to Z</option>
+            <option value="priceLow">Price Low to High</option>
+            <option value="priceHigh">Price High to Low</option>
+          </select>
+            </div>
+          <div class="form-group">
+            <input type="hidden" value="<%= section.name %>" name="sort_section">
+            </div>
+          <button type="submit" class="btn btn-success">Sort</button>
+        </form>
         <!--<h3> link_to section.name, section_path(section) %></h3>-->
 
         <!--<div class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 350 }'>-->
@@ -26,7 +39,9 @@
               <div class="card-block">
                 <h4 class="card-title"><%= food.name %> <%= food.section.name %></h4>
                 <p class="card-text"><%= food.description %></p>
-                <a href="#" class="btn btn-primary">Button</a>
+                <p><%= number_to_currency(food.price, precision: 0, separator: '.', delimiter: '.', unit: '', format: "%n VND") %></p>
+
+                <%= link_to "Order", add_to_order_path(food_id: food.id), class: "btn btn-primary add_to_order", :remote => true %>
               </div>
             </div>
               <% if count==1 %>

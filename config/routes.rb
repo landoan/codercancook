@@ -8,6 +8,11 @@ Rails.application.routes.draw do
   get "contact_us" => "welcome#contact_us"
   resources :sections, only: [:index, :show]
   resources :foods
+  resources :food_orders
+  resources :orders
+  get "add_to_order" => "food_orders#add_to_order"
+  get "show_orders" => "food_orders#show"
+  get "create_order" => "food_orders#create"
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
