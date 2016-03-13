@@ -4,11 +4,53 @@
   <title>CoderCanCook</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="header">
+  <div class="restaurant-name">
+    <%= image_tag(asset_path("logo.png"), width: "100") %>
+    <h1>Coder Can Cook</h1>
+  </div>
+
+  <div class="main-navigation">
+    <nav class="navbar navbar-light">
+      <div id="nav-container" class="nav navbar-nav center-block">
+        <%= link_to "Home", root_path, class: "nav-item nav-link" %>
+        <%= link_to "Menu", sections_path, class: "nav-item nav-link" %>
+        <%= link_to "Contact Us", contact_us_path, class: "nav-item nav-link" %>
+        <div class="clearfix"></div>
+      </div>
+    </nav>
+  </div>
+  <% if current_page?('/') %>
+  <div class="header-photo">
+    <%= image_tag(asset_path("header_photo.jpg"), height: "600") %>
+  </div>
+    <% end %>
+</div>
+<div class="container">
 
 <%= yield %>
+</div>
+<div class="footer">
+  <div class="container">
+    <div class="col-md-3">
+      <h4>Hours</h4>
+      <p>Mon - Sun: 11am - 10pm</p>
+    </div>
+    <div class="col-md-3">
+      <h4>Address</h4>
+      <p>62 Lý Tự Trọng, Bến Nghé, Hồ Chí Minh, Vietnam</p>
+    </div>
+
+    <div class="col-md-6">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.446798395726!2d106.69802091462897!3d10.777051262129497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f47f4866399%3A0xbe26f013de7e4bcf!2sThe+KAfe!5e0!3m2!1sen!2s!4v1457852740906" width="400" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </div>
+  </div>
+
+</div>
 
 </body>
 </html>

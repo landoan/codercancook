@@ -1,0 +1,20 @@
+<div class="panel">
+  <h3><%= link_to @section.name, section_path(@section) %></h3>
+
+  <div class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 350 }'>
+    <% @section.foods.each do |food| %>
+        <div class="grid-item">
+          <% if food.picture && food.picture!='' %>
+              <%= image_tag(food.picture, class: "card-img-top", width: "300", height: "300") %>
+          <% else %>
+              <%= image_tag("http://lorempixel.com/200/200/", class: "card-img-top", width: "300", height: "300") %>
+          <% end %>
+          <div class="card-block">
+            <h4 class="card-title"><%= food.name %> <%= food.section.name %></h4>
+            <p class="card-text"><%= food.description %></p>
+            <a href="#" class="btn btn-primary">Button</a>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>

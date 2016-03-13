@@ -34,7 +34,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console
-  #gem 'debugger'
+  gem 'byebug'
 end
 
 group :development do
@@ -46,4 +46,6 @@ group :development do
 end
 
 gem 'rails_12factor', group: :production
+gem 'bootstrap', '~> 4.0.0.alpha3'
+# gem 'masonry-rails'
 

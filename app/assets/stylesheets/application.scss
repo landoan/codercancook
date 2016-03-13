@@ -1,0 +1,68 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+  *= require_tree .
+  *= require_self
+ */
+@import "bootstrap";
+@font-face {
+  font-family: josefin;
+  src: font-url('JosefinSans-Regular.eot');
+  src: font-url('JosefinSans-Regular.ttf') format('truetype'),
+  font-url('JosefinSans-Regular.eot?#iefix') format('embedded-opentype'),
+  font-url('JosefinSans-Regular.woff') format('woff'),
+  font-url('JosefinSans-Regular.svg#webfont') format('svg');
+}
+body, h1, h2, h3, h4, h5, p, a{
+  font-family: josefin;
+}
+h1{
+  text-transform: uppercase;
+  font-weight: bolder;
+  padding: 10px;
+  letter-spacing: 15px;
+}
+.header{
+  text-align: center;
+}
+.footer{
+  text-align: center;
+  background-color: #212121;
+  padding: 5px;
+  color:#fff;
+}
+
+#nav-container {
+  width: 25%;
+  margin: 0 auto;
+  text-transform: uppercase;
+}
+.main-navigation{
+  background-color: #212121;
+  color: #fff;
+  .navbar-light .navbar-nav .nav-link{
+    color: #fff;
+    padding: 10px;
+  }
+  .navbar-light .navbar-nav .nav-link:hover {
+    border-bottom: 2px solid #fff;
+  }
+}
+.section-select{
+  width: 100%;
+}
+
+/*tab for section*/
+.tab-content{
+  padding: 30px 10px 10px 10px;
+}
+/*end tab for section*/

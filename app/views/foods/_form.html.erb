@@ -1,0 +1,27 @@
+<%= form_for [@food] do |f| %>
+  <fieldset class="form-group">
+    <label for="name">Name: </label>
+    <%= f.text_field :name, id: "name", class: "form-control", placeholder: "name" %>
+
+  </fieldset>
+    <fieldset class="form-group">
+      <label for="decription">Description: </label>
+      <%= f.text_area :description, id: "description", class: "form-control", placeholder: "description", rows: 10, cols: 25 %>
+    </fieldset>
+    <fieldset class="form-group">
+      <label for="price">Price: </label>
+      <%= f.number_field :price, id: "price", class: "form-control", placeholder: "price" %>
+    </fieldset>
+    <fieldset class="form-group">
+      <label for="picture">Picture: </label>
+      <%= f.text_field :picture, id: "picture", class: "form-control", placeholder: "picture" %>
+    </fieldset>
+    <fieldset class="form-group">
+      <label for="section_id">Section: </label>
+      <%= f.select :section_id, [["Breakfast","1"], ["Lunch", "2"], ["Dinner", "3"]],
+                   id: "section_id", prompt: "Select...", class: "form-control section-select" %>
+    </fieldset>
+    <div class="actions">
+      <button type="submit" class="btn btn-success">Save</button>
+    </div>
+<% end %>

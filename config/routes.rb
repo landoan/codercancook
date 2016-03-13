@@ -4,7 +4,10 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
-
+  resources :welcome
+  get "contact_us" => "welcome#contact_us"
+  resources :sections, only: [:index, :show]
+  resources :foods
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
