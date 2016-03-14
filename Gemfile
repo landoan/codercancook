@@ -47,5 +47,6 @@ end
 
 gem 'rails_12factor', group: :production
 gem 'bootstrap', '~> 4.0.0.alpha3'
+gem 'simple_form'
 # gem 'masonry-rails'
 

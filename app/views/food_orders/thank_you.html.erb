@@ -1,0 +1,27 @@
+<h2>Thank you for your order. Please check order information below</h2>
+<p>Name: <%= @order.name %></p>
+<p>Phone: <%= @order.phone %></p>
+<p>Email: <%= @order.email %></p>
+<p>Address: <%= @order.address %></p>
+<p>Total: <%= @order.total_order %> (including 30 VND for shipping)</p>
+<p>Order time: <%= @order.created_at.strftime(" %B %d at %I:%M %p") %></p>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Name of food</th>
+        <th>Price per item</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+
+<% @foods.each do |f| %>
+    <tr>
+      <td><%= f.name %></td>
+      <td><%= number_to_currency(f.price, precision: 0, separator: '.', delimiter: '.', unit: '', format: "%n VND") %></td>
+      <td><%= f.description %></td>
+    </tr>
+<% end %>
+
+    </tbody>
+    </table>

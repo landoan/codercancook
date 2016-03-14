@@ -1,5 +1,5 @@
 <h3>Your current order</h3>
-<% if @foods.count() == 0 || session[:foods_order].count == 0 %>
+<% if @foods.length == 0 || session[:foods_order].length == 0 %>
       Currently, you do not have any food in the basket. Please order <%= link_to "here", sections_path  %>
     <% else %>
     <table class="table table-striped">
@@ -21,8 +21,8 @@
     <td><%= f.description %></td>
     </tr>
 <% end %>
-<% if @foods.count() != 0 %>
+<% if @foods.length != 0 %>
       </tbody>
       </table>
+    <%= render 'form' %>
 <% end %>
-<%= render 'form' %>

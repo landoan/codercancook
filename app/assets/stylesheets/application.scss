@@ -14,6 +14,7 @@
   *= require_self
  */
 @import "bootstrap";
+
 @font-face {
   font-family: josefin;
   src: font-url('JosefinSans-Regular.eot');
@@ -30,6 +31,10 @@ h1{
   font-weight: bolder;
   padding: 10px;
   letter-spacing: 15px;
+}
+.container{
+  min-height: 200px;
+  padding: 10px;
 }
 .header{
   text-align: center;

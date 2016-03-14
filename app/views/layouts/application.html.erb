@@ -20,7 +20,7 @@
         <%= link_to "Home", root_path, class: "nav-item nav-link" %>
         <%= link_to "Menu", sections_path, class: "nav-item nav-link" %>
         <%= link_to "Contact Us", contact_us_path, class: "nav-item nav-link" %>
-        <a href="<%= show_orders_path %>" class="nav-item nav-link">Order (<span class="order_no">0</span>)</a>
+        <a href="<%= show_orders_path %>" class="nav-item nav-link">Order (<span class="order_no"><%= session[:foods_order].count() %></span>)</a>
         <div class="clearfix"></div>
       </div>
     </nav>

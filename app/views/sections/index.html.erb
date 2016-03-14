@@ -1,20 +1,20 @@
 <ul class="nav nav-tabs">
   <% @section_types.each do |section| %>
       <li class="nav-item">
-        <a class="nav-link <%= section.id == 1? 'active': ''%>" data-toggle="tab" href="#section_<%= section.id %>"><%= section.name %></a>
+        <a class="nav-link <%= section.name == @active_section? 'active' :(section.id == 1 && @active_section == ''? 'active': '') %>" data-toggle="tab" href="#section_<%= section.id %>"><%= section.name %></a>
       </li>
   <% end %>
 </ul>
 <div class="tab-content">
-  <% @section_types.each do |section| %>
-      <div id="section_<%= section.id %>" class="tab-pane <%= section.id == 1? 'active': ''%>">
+  <% @sections.each do |section| %>
+      <div id="section_<%= section.id %>" class="tab-pane <%= section.name == @active_section? 'active' :(section.id == 1 && @active_section == ''? 'active': '') %>">
         <form id ="sort-form-<%= section.id %>" action="sections" method="get" class="form-inline">
           <div class="form-group">
           <select id="sort-type-<%= section.id %>" name="sort_type" class="form-control">
             <option>Sort by...</option>
-            <option value="aToz">A to Z</option>
-            <option value="priceLow">Price Low to High</option>
-            <option value="priceHigh">Price High to Low</option>
+            <option value="aToz" <%= @sort_type == 'aToz' && section.name == @active_section? 'selected' :'' %>>A to Z</option>
+            <option value="priceLow" <%= @sort_type == 'priceLow' && section.name == @active_section? 'selected' :'' %>>Price Low to High</option>
+            <option value="priceHigh" <%= @sort_type == 'priceHigh' && section.name == @active_section? 'selected' :'' %>>Price High to Low</option>
           </select>
             </div>
           <div class="form-group">
@@ -26,7 +26,18 @@
 
         <!--<div class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 350 }'>-->
           <% count = 1 %>
-          <% section.foods.each do |food| %>
+          <% iterator = section.foods.each %>
+          <% if section.name == @active_section  %>
+            <% if @sort_type == 'aToz' %>
+              <% iterator = section.foods.order('name').each %>
+            <% elsif @sort_type == 'priceLow' %>
+              <% iterator = section.foods.order('price').each %>
+            <% elsif @sort_type == ('priceHigh') %>
+              <% iterator = section.foods.order('price DESC').each %>
+            <% end %>
+          <% end %>
+
+          <% iterator.each do |food| %>
               <% if count=1 %>
                   <div class="grid">
               <% end %>
