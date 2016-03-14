@@ -1,10 +1,11 @@
 //= require jquery
 //= require jquery_ujs
+//= require tether
+//= require bootstrap-sprockets
+//= require turbolinks
 //= require turbolinks
 //= require_tree .
 //= require bootstrap
-//= require tether
-//= require bootstrap-sprockets
 
 $(document).on('turbolinks:load', function () {
     $('.grid').masonry({
