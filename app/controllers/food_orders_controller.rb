@@ -17,7 +17,7 @@ class FoodOrdersController < ApplicationController
     @foods.each do |f|
       @order.total_order = @order.total_order + f.price
     end
-    @order.total_order = @order.total_order + 30
+    @order.total_order = @order.total_order + 20000
     if (@order.coupon == "CODERSCHOOL")
       @order.total_order = @order.total_order/2
     end

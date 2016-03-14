@@ -19,6 +19,7 @@
 <p>Phone: <%= @order.phone %></p>
 <p>Email: <%= @order.email %></p>
 <p>Address: <%= @order.address %></p>
+<p>Total: <%= number_to_currency(@order.total_order, precision: 0, separator: '.', delimiter: '.', unit: '', format: "%n VND") %> (including 20000 VND for shipping)</p>
 <table class="table table-striped">
   <thead>
   <tr>

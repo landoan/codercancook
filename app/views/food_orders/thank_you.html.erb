@@ -3,7 +3,7 @@
 <p>Phone: <%= @order.phone %></p>
 <p>Email: <%= @order.email %></p>
 <p>Address: <%= @order.address %></p>
-<p>Total: <%= @order.total_order %> (including 30 VND for shipping)</p>
+<p>Total: <%= number_to_currency(@order.total_order, precision: 0, separator: '.', delimiter: '.', unit: '', format: "%n VND") %> (including 20000 VND for shipping)</p>
 <p>Order time: <%= @order.created_at.strftime(" %B %d at %I:%M %p") %></p>
     <table class="table table-striped">
       <thead>
