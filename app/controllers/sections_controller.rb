@@ -20,6 +20,20 @@ class SectionsController < ApplicationController
     @section = Section.find(params[:id])
   end
 
+  def view_food_more_info
+    food = Food.find_by_id(params[:food_id])
+    food.view_no ||= 0
+    current_no = food.view_no + 1
+    food.update_attribute("view_no", current_no)
+    if food.save
+      respond_to do |format|
+        format.html { redirect_to sections_path }
+        format.json { head :no_content }
+        format.js   { render :layout => false }
+      end
+    end
+
+  end
 
   def food_by_section(section_id)
     @foods = Food.find(section_id)

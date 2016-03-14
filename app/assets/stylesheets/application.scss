@@ -65,7 +65,12 @@ h1{
 .section-select{
   width: 100%;
 }
-
+.morecontent span {
+  display: none;
+}
+.morelink {
+  display: block;
+}
 /*tab for section*/
 .tab-content{
   padding: 30px 10px 10px 10px;

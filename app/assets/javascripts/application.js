@@ -4,12 +4,13 @@
 //= require_tree .
 //= require bootstrap
 
-$(document).on('turbolinks:load', function() {
+$(document).on('turbolinks:load', function () {
     $('.grid').masonry({
         // options...
         itemSelector: '.grid-item',
         columnWidth: 300
     });
+
 
     //$('.nav-link').click(function(e){
     //    var tabNum = $(this).index();
@@ -25,3 +26,27 @@ $(document).on('turbolinks:load', function() {
     //    }
     //});
 });
+$(document).ready(function () {
+    // Configure/customize these variables.
+    var showChar = 0;  // How many characters are shown by default
+    var ellipsestext = "...";
+    var moretext = "Details >";
+    var lesstext = "Hide details";
+
+    $(".morelink").click(function () {
+        if ($(this).hasClass("less")) {
+            $(this).removeClass("less");
+            $(this).html(moretext);
+        } else {
+            var food_id = $(this).attr("id").substr($(this).attr("id").indexOf("-")+1, $(this).attr("id").length -1);
+            var current_view_no = $("#view-" + food_id).html();
+            var new_no = parseInt(current_view_no) + 1;
+            $("#view-" + food_id).html(new_no);
+            $(this).addClass("less");
+            $(this).html(lesstext);
+        }
+
+        $(this).parent().prev().toggle();
+        $(this).prev().toggle();
+    });
+})

@@ -26,7 +26,7 @@
 
         <!--<div class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 350 }'>-->
           <% count = 1 %>
-          <% iterator = section.foods.each %>
+          <% iterator = section.foods.order('view_no DESC').each %>
           <% if section.name == @active_section  %>
             <% if @sort_type == 'aToz' %>
               <% iterator = section.foods.order('name').each %>
@@ -48,8 +48,16 @@
                   <%= image_tag("http://lorempixel.com/200/200/", class: "card-img-top", width: "300", height: "300") %>
               <% end %>
               <div class="card-block">
-                <h4 class="card-title"><%= food.name %> <%= food.section.name %></h4>
-                <p class="card-text"><%= food.description %></p>
+                <h4 class="card-title"><%= food.name %></h4>
+                <p class="card-text">
+                  <span class="more" id="more-<%= food.id %>">
+                    <span class="moreellipses">&nbsp;</span>
+                    <span class="morecontent">
+                      <span>blah</span>&nbsp;&nbsp;<a id="morelink-<%= food.id %>" class="morelink" data-remote="true" href="/view_food_more_info.js?food_id=<%= food.id %>">Details &gt;</a>
+                    </span>
+                  </span>
+                </p>
+                <p><span class="view_no" id="view-<%= food.id%>"><%= food.view_no !=nil ? food.view_no : 0 %></span> views</p>
                 <p><%= number_to_currency(food.price, precision: 0, separator: '.', delimiter: '.', unit: '', format: "%n VND") %></p>
 
                 <%= link_to "Order", add_to_order_path(food_id: food.id), class: "btn btn-primary add_to_order", :remote => true %>

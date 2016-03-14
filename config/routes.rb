@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "add_to_order" => "food_orders#add_to_order"
   get "show_orders" => "food_orders#show"
   get "test" => "food_orders#test_email"
+  get "view_food_more_info" => "sections#view_food_more_info"
   post "create_order" => "food_orders#create"
 
   # Example of regular route:
