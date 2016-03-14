@@ -13,7 +13,7 @@ class FoodsController < ApplicationController
 
   def create
     @food = Food.new(food_params)
-    byebug
+    
     if @food.save
       redirect_to sections_path
     else
