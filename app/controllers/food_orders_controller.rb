@@ -40,8 +40,13 @@ class FoodOrdersController < ApplicationController
   private
   def add_foods
     @foods = []
-    session[:foods_order].each do |s|
-      @foods << Food.find_by_id(s)
+    if session[:foods_order]
+
+      session[:foods_order].each do |s|
+        @foods << Food.find_by_id(s)
+      end
+    else
+      session[:foods_order] = []
     end
     @count = @foods.count()
   end
